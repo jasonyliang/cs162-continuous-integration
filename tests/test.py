@@ -22,7 +22,7 @@ class DockerComposeTestCase(unittest.TestCase):
         connection = engine.connect()
         results = connection.execute("SELECT * FROM Expression WHERE text='3+2'").fetchall()
 
-        self.assertNotEqual(len(result), 0)
+        self.assertNotEqual(len(results), 0)
 
     def test_correct_result(self):
         expression = {'expression': "3+2"}
@@ -32,7 +32,7 @@ class DockerComposeTestCase(unittest.TestCase):
         connection = engine.connect()
         results = connection.execute("SELECT value FROM Expression WHERE text='3+2'").first()
 
-        self.assertEqual(len(result), 5)
+        self.assertEqual(results, 5)
 
     def test_error_db(self):
         incorrect = {"expression": "Hello xDD"}
@@ -42,7 +42,7 @@ class DockerComposeTestCase(unittest.TestCase):
         connection = engine.connect()
         results = connection.execute("SELECT * FROM Expression WHERE text='Hello xDD'").fetchall()
 
-        self.assertNotEqual(len(result), 0)
+        self.assertNotEqual(len(results), 0)
 
 
 
