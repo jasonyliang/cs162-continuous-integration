@@ -32,7 +32,7 @@ class DockerComposeTestCase(unittest.TestCase):
         connection = engine.connect()
         results = connection.execute("SELECT value FROM Expression WHERE text='3+2'").first()
 
-        self.assertEqual(results, 5.0)
+        self.assertEqual(results[0], 5.0)
 
     def test_error_db(self):
         incorrect = {"expression": "Hello xDD"}
